@@ -22,7 +22,7 @@ const navigate = useNavigate()
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post("https://real-back-jkxe.onrender.com/login", formData)
+      const res = await axios.post("https://real-back-jkxe.onrender.com/login", formData )
       toast.success("You registered successfully")
       navigate("/")      
       localStorage.setItem("user", JSON.stringify(res.data.user))
