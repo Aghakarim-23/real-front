@@ -10,6 +10,9 @@ const Login = () => {
     password: "",
   });
 
+    const [isLoading,setIsloading]=useState(false)
+  
+
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormData({
@@ -21,8 +24,10 @@ const Login = () => {
 const navigate = useNavigate()
 
   const handleSubmit = async () => {
+    setIsloading(true)
     try {
       const res = await axios.post("https://real-back-jkxe.onrender.com/login", formData )
+      // const res = await axios.post("http://localhost:5001/login", formData )
       toast.success("You registered successfully")
       navigate("/")      
       localStorage.setItem("user", JSON.stringify(res.data.user))
@@ -30,6 +35,8 @@ const navigate = useNavigate()
     } catch (error) {
       console.error(error)
       toast.error(error?.response?.data?.message)
+    }finally {
+          setIsloading(false)
     }
     
     
@@ -77,9 +84,10 @@ const navigate = useNavigate()
           </div>
           <button
             type="submit"
-            className="rounded-md bg-green-600 py-3 text-white cursor-pointer"
+            disabled={isLoading}
+            className="rounded-md bg-green-600 py-3 text-white cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send
+            {isLoading ? "Sending..." : "Send"}
           </button>
         </form>
       </div>

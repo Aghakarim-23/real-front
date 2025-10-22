@@ -100,9 +100,9 @@ const navigate = useNavigate()
           <button
             type="submit"
             disabled={isLoading}
-            className="rounded-md bg-green-600 py-3 text-white cursor-pointer"
+            className='rounded-md py-3 text-white disabled:opacity-50 disabled:cursor-not-allowed bg-green-600'
           >
-            {isLoading ? "Sending": "Send"}
+            {isLoading ? "Sending...": "Send"}
           </button>
         </form>
       </div>
