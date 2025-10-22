@@ -3,6 +3,8 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom' 
 import { toast } from "react-toastify";
 
+  const [isLoading,setIsloading]=useState(false)
+  
 const Register = () => {
   const [formData, setFormData] = useState({
     userName: "",
@@ -21,6 +23,7 @@ const Register = () => {
 const navigate = useNavigate()
 
   const handleSubmit = async () => {
+    setIsloading(true)
     try {
       const res = await axios.post("https://real-back-jkxe.onrender.com/register", formData)
       toast.success("You registered successfully")
@@ -28,6 +31,8 @@ const navigate = useNavigate()
     } catch (error) {
       console.error(error)
       toast.error(error)
+    } finally {
+          setIsloading(false)
     }
     // setFormData({
     //    userName: "",
@@ -92,9 +97,10 @@ const navigate = useNavigate()
           </div>
           <button
             type="submit"
+            disabled={isLoading}
             className="rounded-md bg-green-600 py-3 text-white cursor-pointer"
           >
-            Send
+            {isLoading ? "Sending": "Send"}
           </button>
         </form>
       </div>
