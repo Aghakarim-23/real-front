@@ -15,6 +15,7 @@ const Home = () => {
 
   const logout = () => {
     localStorage.removeItem("user")
+    localStorage.removeItem("token")
     setUser(null)
     navigate("/")
   }

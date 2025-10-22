@@ -28,6 +28,8 @@ const navigate = useNavigate()
     setIsloading(true)
     try {
       const res = await axios.post("https://real-back-jkxe.onrender.com/register", formData)
+      // const res = await axios.post("http://localhost:5001/register", formData )
+
       toast.success("You registered successfully")
       navigate("/login")
     } catch (error) {
