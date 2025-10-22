@@ -10,7 +10,7 @@ const UserList = () => {
     const getList = async () => {
       try {
         // const response = await axios.get("http://localhost:5001/users");
-        const res = await axios.get("https://real-back-jkxe.onrender.com/users",  )
+        const response = await axios.get("https://real-back-jkxe.onrender.com/users",  )
         setList(response.data);
       } catch (error) {
         console.error(error);
