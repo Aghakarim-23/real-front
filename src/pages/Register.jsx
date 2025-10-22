@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom' 
 import { toast } from "react-toastify";
 
-  const [isLoading,setIsloading]=useState(false)
+
   
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,8 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const [isLoading,setIsloading]=useState(false)
 
   const handleChange = (e) => {
     const {name, value} = e.target
